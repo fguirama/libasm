@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.20)
+project(asm_project)
+enable_language(ASM_NASM)
+set(CMAKE_ASM_FLAGS "-f elf64 -g -F dwarf")
+add_executable(main test.asm)
