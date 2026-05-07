@@ -1,38 +1,48 @@
+# ---------- VARIABLES ---------------------------------------------------------- #
+NAME        =	libasm.a
 
-# VAR ---------------------------------------------------------------
-OBJS_DIR		=	.OBJS/
-SRCS			=	test.asm
-OBJS			=	$(addprefix $(OBJS_DIR), $(SRCS:.asm=.o))
+SRCS_DIR    =	srcs/
+OBJS_DIR    =	.objs/
 
-NAME			=	libasm.a
-HEAD			=	INCLUDES/
+SRCS        =	ft_strlen.asm
+# \
+#             	ft_strcpy.asm \
+#             	ft_strcmp.asm \
+#             	ft_write.asm \
+#             	ft_read.asm \
+#             	ft_strdup.asm
 
-FLAGS			=	-f elf64
-RM				=	rm -rf
+SRCS        :=	$(addprefix $(SRCS_DIR), $(SRCS))
+OBJS        :=	$(addprefix $(OBJS_DIR), $(notdir $(SRCS:.asm=.o)))
 
+CC          =	gcc
+CFLAGS      =	-Wall -Wextra -Werror
+NASM        =	nasm
+NASMFLAGS   =	-f macho64
+#NASMFLAGS   =	-f elf64
+AR          =	ar rcs
+RM          =	rm -rf
 
-# RULES ---------------------------------------------------------------------- #
-all:				$(NAME)
+# ---------- RULES -------------------------------------------------------------- #
+all:			$(NAME)
 
-run:				all
-					./$(NAME)
+$(NAME):		$(OBJS)
+				$(AR) $(NAME) $(OBJS)
 
-bonus:
-					$(NAME)
+$(OBJS_DIR)%.o:	$(SRCS_DIR)%.asm
+				@mkdir -p $(OBJS_DIR)
+				$(NASM) $(NASMFLAGS) $< -o $@
 
-$(NAME):			$(OBJS)
-					ld $(OBJS) -o $(NAME)
-
-$(OBJS_DIR)%.o:		%.asm
-					@mkdir -p $(OBJS_DIR)
-					nasm $(FLAGS) $< -o $@
+run:			$(NAME)
+				$(CC) $(CFLAGS) main.c -L. -lasm -o test
+				./test
 
 clean:
-					$(RM) $(OBJS_DIR)
+				$(RM) $(OBJS_DIR)
 
-fclean:				clean
-					$(RM) $(NAME)
+fclean:			clean
+				$(RM) $(NAME) test
 
-re:					fclean all
+re:				fclean all
 
-.PHONY:				all run clean fclean re
+.PHONY: all clean fclean re run
