@@ -2,14 +2,13 @@ section .text
 global _ft_strlen
 
 _ft_strlen:
-    mov rax, rdi
+    xor rax, rax
 
-loop_mon_cul:
-    cmp byte [rax], 0
-    je end_of_program
-    add rax, 1
-    jmp loop_mon_cul
+.next_char:
+    cmp byte [rdi + rax], 0
+    je .done
+    inc rax
+    jmp .next_char
 
-end_of_program:
-    sub rax, rdi
+.done:
     ret
