@@ -5,7 +5,7 @@ _ft_strlen:
     mov rax, rdi
 
 loop_mon_cul:
-    cmp [rax], 0
+    cmp byte [rax], 0
     je end_of_program
     add rax, 1
     jmp loop_mon_cul
