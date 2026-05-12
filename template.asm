@@ -2,6 +2,7 @@ bits 64
 
 ;system v amd
 ; rax = syscall number
+; cl
 ; rdi, rsi, rdx, rcx, r8, r9 (pile de droite a gauche)
 ; retour dans rax | rax rbx
 
@@ -11,10 +12,13 @@ bits 64
 ; 1001b, 0b1001
 ; 0xA15, BC41x
 
-;b = bytes   8 bits 00000000
-;w = word   16 bits
-;d = d-word 32 bits
-;q = q-word 64 bits
+;b = bytes   8 bits 00000000 cl
+;w = word   16 bits          cx
+;d = d-word 32 bits          ecx
+;q = q-word 64 bits          rcx
+
+;movzx -> 00000000000000000000000
+;movsx -> 0000000 et ca garde le signe
 
 ;t 80bits
 ;o 128bits
