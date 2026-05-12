@@ -13,5 +13,5 @@ _ft_strcpy:
     jmp .cpy_loop
 
 .done:
-    mov rax, rsi
+    mov rax, rdi
     ret
