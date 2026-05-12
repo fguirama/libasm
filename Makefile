@@ -6,7 +6,7 @@ OBJS_DIR    =	.objs/
 
 SRCS        =	ft_strlen.asm \
              	ft_strcpy.asm \
-#             	ft_strcmp.asm \
+             	ft_strcmp.asm
 #             	ft_write.asm \
 #             	ft_read.asm \
 #             	ft_strdup.asm
@@ -15,7 +15,7 @@ SRCS        :=	$(addprefix $(SRCS_DIR), $(SRCS))
 OBJS        :=	$(addprefix $(OBJS_DIR), $(notdir $(SRCS:.asm=.o)))
 
 CC          =	gcc
-CFLAGS      =	-Wall -Wextra -Werror
+CFLAGS      =	-Wall -Wextra -Werror -g3 -fsanitize=address
 NASM        =	nasm
 NASMFLAGS   =	-f macho64
 #NASMFLAGS   =	-f elf64
