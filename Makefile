@@ -8,8 +8,8 @@ SRCS        =	ft_strlen.asm \
              	ft_strcpy.asm \
              	ft_strcmp.asm \
              	ft_write.asm \
-             	ft_read.asm
-#             	ft_strdup.asm
+             	ft_read.asm \
+             	ft_strdup.asm
 
 SRCS        :=	$(addprefix $(SRCS_DIR), $(SRCS))
 OBJS        :=	$(addprefix $(OBJS_DIR), $(notdir $(SRCS:.asm=.o)))
