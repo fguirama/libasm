@@ -3,3 +3,5 @@
 .OBJS
 libasm.a
 *.o
+test
+test.dSYM
