@@ -6,8 +6,7 @@ section .text
 global _ft_strdup
 
 _ft_strdup:
-    push rbx
-    mov rbx, rdi
+    push rdi
 
     call _ft_strlen
 
@@ -19,9 +18,8 @@ _ft_strdup:
     je .done
 
     mov rdi, rax
-    mov rsi, rbx
+    pop rsi
     call _ft_strcpy
 
 .done:
-    pop rbx
     ret
