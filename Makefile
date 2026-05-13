@@ -16,10 +16,9 @@ SRCS        :=	$(addprefix $(SRCS_DIR), $(SRCS))
 OBJS        :=	$(addprefix $(OBJS_DIR), $(notdir $(SRCS:.asm=.o)))
 
 CC          =	gcc
-CFLAGS      =	-Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS      =	-Wall -Wextra -Werror -g3 -fsanitize=address -no-pie -lm # todo remove flag -no-pie
 NASM        =	nasm
-NASMFLAGS   =	-f macho64
-#NASMFLAGS   =	-f elf64
+NASMFLAGS   =	-f elf64 -F dwarf
 AR          =	ar rcs
 RM          =	rm -rf
 
