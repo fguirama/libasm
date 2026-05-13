@@ -1,25 +1,25 @@
-extern _malloc
-extern _ft_strlen
-extern _ft_strcpy
+extern malloc
+extern ft_strlen
+extern ft_strcpy
 
 section .text
-global _ft_strdup
+global ft_strdup
 
-_ft_strdup:
-    push rdi
+ft_strdup:
+    mov r12, rdi
 
-    call _ft_strlen
+    call ft_strlen
 
     mov rdi, rax
     inc rdi
-    call _malloc
+    call malloc
 
     test rax, rax
     je .done
 
     mov rdi, rax
-    pop rsi
-    call _ft_strcpy
+    mov rsi, r12
+    call ft_strcpy
 
 .done:
     ret
