@@ -51,8 +51,6 @@ int ft_atoi_base2(char *str, char *base) {
 }
 
 int	main() {
-    printf("res %d\n", ft_atoi_base("356", "K0123456789"));
-    exit(0);
 	test_strlen();
 	test_strcpy();
 	test_strcmp();
