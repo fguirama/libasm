@@ -2,6 +2,7 @@ section .text
 global ft_strcmp
 
 ft_strcmp:
+    push cl
     xor rax, rax
 
 .cmp_loop:
@@ -18,4 +19,5 @@ ft_strcmp:
     mov cl, byte [rdi + rax]
     sub cl, byte [rsi + rax]
     movsx rax, cl
+    pop cl
     ret

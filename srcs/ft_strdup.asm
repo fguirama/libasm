@@ -6,6 +6,9 @@ section .text
 global ft_strdup
 
 ft_strdup:
+    push r12
+    push rdi
+    push rsi
     mov r12, rdi
 
     call ft_strlen
@@ -22,4 +25,7 @@ ft_strdup:
     call ft_strcpy
 
 .done:
+    pop rsi
+    pop rdi
+    pop r12
     ret
