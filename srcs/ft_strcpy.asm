@@ -2,7 +2,6 @@ section .text
 global ft_strcpy
 
 ft_strcpy:
-    push cl
     xor rax, rax
 
 .cpy_loop:
@@ -14,6 +13,5 @@ ft_strcpy:
     jmp .cpy_loop
 
 .done:
-    pop cl
     mov rax, rdi
     ret

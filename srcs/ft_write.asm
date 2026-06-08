@@ -11,11 +11,11 @@ ft_write:
     ret
 
 .error:
-    push rdi
     neg rax
     mov rdi, rax
+    add rdi, 8
     call __errno_location
+    sub rdi, 8
     mov [rax], rdi
     mov rax, -1
-    pop rdi
     ret

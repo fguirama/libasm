@@ -9,15 +9,19 @@ ft_strcmp:
     cmp byte [rdi + rax], 0
     je .done
 
-    mov cl, byte [rdi + rax]
-    cmp cl, byte [rsi + rax]
+    movzx ecx, [rdi + rax]
+    cmp ecx, [rsi + rax]
     jne .done
     inc rax
     jmp .cmp_loop
 
 .done:
-    mov cl, byte [rdi + rax]
-    sub cl, byte [rsi + rax]
-    movsx rax, cl
+    movzx ecx, [rdi + rax]
+    sub ecx, [rsi + rax]
+    movzx rax, cl
     pop cl
     ret
+
+;todo demander a chat gpt de tous m'expliquer
+;todo test linux
+;todo demander gentilement un audit par chat gpt
